@@ -1,6 +1,6 @@
 package com.gmail.artsiombaranau.spring5petclinic.model;
 
-public class Person extends BaseEntity{
+public class Person extends BaseEntity {
 
     private String firstName;
     private String lastName;
@@ -20,4 +20,5 @@ public class Person extends BaseEntity{
     public void setLastName(String lastName) {
         this.lastName = lastName;
     }
+
 }
