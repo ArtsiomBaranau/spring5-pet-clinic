@@ -4,7 +4,6 @@ import com.gmail.artsiombaranau.spring5petclinic.model.Owner;
 import com.gmail.artsiombaranau.spring5petclinic.services.OwnerService;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
 import java.util.Set;
 
 @Service
@@ -12,35 +11,27 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Set<Owner> findAll() {
-        return new HashSet<>(map.values());
+        return super.findAll();
     }
 
     @Override
     public Owner findById(Long id) {
-        return map.get(id);
+        return super.findById(id);
     }
 
     @Override
     public Owner save(Owner object) {
-        if (object != null) {
-            if (object.getId() == null) {
-                object.setId(getNextId());
-            }
-            map.put(object.getId(), object);
-        } else {
-            throw new RuntimeException("Object cannot be null.");
-        }
-        return object;
+       return super.save(object);
     }
 
     @Override
     public void delete(Owner object) {
-        map.entrySet().removeIf(entry -> entry.getValue().equals(object));
+        super.delete(object);
     }
 
     @Override
     public void deleteById(Long id) {
-        map.remove(id);
+        super.deleteById(id);
     }
 
     @Override
