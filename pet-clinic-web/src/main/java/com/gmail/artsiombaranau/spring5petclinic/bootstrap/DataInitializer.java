@@ -1,8 +1,10 @@
 package com.gmail.artsiombaranau.spring5petclinic.bootstrap;
 
 import com.gmail.artsiombaranau.spring5petclinic.model.Owner;
+import com.gmail.artsiombaranau.spring5petclinic.model.PetType;
 import com.gmail.artsiombaranau.spring5petclinic.model.Vet;
 import com.gmail.artsiombaranau.spring5petclinic.services.OwnerService;
+import com.gmail.artsiombaranau.spring5petclinic.services.PetTypeService;
 import com.gmail.artsiombaranau.spring5petclinic.services.VetService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
@@ -12,15 +14,26 @@ public class DataInitializer implements CommandLineRunner {
 
     private final OwnerService ownerService;
     private final VetService vetService;
+    private final PetTypeService petTypeService;
 
-    public DataInitializer(OwnerService ownerService, VetService vetService) {
+    public DataInitializer(OwnerService ownerService, VetService vetService, PetTypeService petTypeService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
+        this.petTypeService = petTypeService;
     }
 
 
     @Override
-    public void run(String... args) throws Exception {
+    public void run(String... args) {
+        PetType dog = new PetType();
+        dog.setName("Dog");
+        petTypeService.save(dog);
+
+        PetType cat = new PetType();
+        cat.setName("Cat");
+        petTypeService.save(cat);
+
+        System.out.println("Loaded pet types...");
 
         Owner owner1 = new Owner();
         owner1.setFirstName("James");
