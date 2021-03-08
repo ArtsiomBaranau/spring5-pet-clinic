@@ -1,13 +1,13 @@
 package com.gmail.artsiombaranau.spring5petclinic.services.map;
 
 import com.gmail.artsiombaranau.spring5petclinic.model.Speciality;
-import com.gmail.artsiombaranau.spring5petclinic.services.SpecialtiesService;
+import com.gmail.artsiombaranau.spring5petclinic.services.SpecialtyService;
 import org.springframework.stereotype.Service;
 
 import java.util.Set;
 
 @Service
-public class SpecialtiesServiceMap extends AbstractMapService<Speciality, Long> implements SpecialtiesService {
+public class SpecialtyServiceMap extends AbstractMapService<Speciality, Long> implements SpecialtyService {
     @Override
     public Set<Speciality> findAll() {
         return super.findAll();
