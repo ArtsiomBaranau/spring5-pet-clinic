@@ -1,10 +1,7 @@
 package com.gmail.artsiombaranau.spring5petclinic.bootstrap;
 
 import com.gmail.artsiombaranau.spring5petclinic.model.*;
-import com.gmail.artsiombaranau.spring5petclinic.services.OwnerService;
-import com.gmail.artsiombaranau.spring5petclinic.services.PetTypeService;
-import com.gmail.artsiombaranau.spring5petclinic.services.SpecialityService;
-import com.gmail.artsiombaranau.spring5petclinic.services.VetService;
+import com.gmail.artsiombaranau.spring5petclinic.services.*;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
@@ -17,12 +14,14 @@ public class DataInitializer implements CommandLineRunner {
     private final VetService vetService;
     private final PetTypeService petTypeService;
     private final SpecialityService specialityService;
+    private final VisitService visitService;
 
-    public DataInitializer(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService) {
+    public DataInitializer(OwnerService ownerService, VetService vetService, PetTypeService petTypeService, SpecialityService specialityService, VisitService visitService) {
         this.ownerService = ownerService;
         this.vetService = vetService;
         this.petTypeService = petTypeService;
         this.specialityService = specialityService;
+        this.visitService = visitService;
     }
 
 
@@ -92,9 +91,18 @@ public class DataInitializer implements CommandLineRunner {
 
         owner2.getPets().add(skylarsPet);
 
+        System.out.println("Loaded owners...");
+
         ownerService.save(owner2);
 
-        System.out.println("Loaded owners...");
+        Visit catVisit = new Visit();
+        catVisit.setPet(skylarsPet);
+        catVisit.setDate(LocalDate.now());
+        catVisit.setDescription("Two owners will be...");
+
+        visitService.save(catVisit);
+
+        System.out.println("Loaded visits...");
 
         Vet vet1 = new Vet();
         vet1.setFirstName("Tom");
