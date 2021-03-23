@@ -11,7 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.Set;
 
 @Service
-@Profile({"default","map"})
+@Profile({"default", "map"})
 public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements OwnerService {
 
     private final PetTypeService petTypeService;
@@ -42,7 +42,7 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
                             pet.setPetType(petTypeService.save(pet.getPetType()));
                         }
                     } else throw new RuntimeException("Pet Type is required!");
-                    if (pet.getId()==null){
+                    if (pet.getId() == null) {
                         Pet savedPet = petService.save(pet);
                         pet.setId(savedPet.getId());
                     }
@@ -64,6 +64,10 @@ public class OwnerServiceMap extends AbstractMapService<Owner, Long> implements 
 
     @Override
     public Owner findByLastName(String lastName) {
-        return null;
+        return this.findAll()
+                .stream()
+                .filter(owner -> owner.getLastName().equalsIgnoreCase(lastName))
+                .findFirst()
+                .orElse(null);
     }
 }

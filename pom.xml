@@ -1,23 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <packaging>pom</packaging>
+
     <modules>
         <module>pet-clinic-data</module>
         <module>pet-clinic-web</module>
     </modules>
+
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
         <version>2.4.2</version>
         <relativePath /> <!-- lookup parent from repository -->
     </parent>
+
     <groupId>com.gmail.artsiombaranau</groupId>
     <artifactId>spring5-pet-clinic</artifactId>
     <version>0.0.2-SNAPSHOT</version>
+
+    <packaging>pom</packaging>
+
     <name>spring5-pet-clinic</name>
-    <description>My first Spring 5 app.</description>
+    <description>Spring 5 Pet Clinic.</description>
+
     <properties>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
         <java.version>11</java.version>
     </properties>
 
